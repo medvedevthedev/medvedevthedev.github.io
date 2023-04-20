@@ -22,6 +22,15 @@
       align-items: center;
     }
 
+    .group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-family: "Bodoni", sans-serif;
+    }
+
     .image-list {
       list-style: none;
       display: flex;
@@ -88,60 +97,87 @@
       const listContainer = document.createElement("div");
       listContainer.classList.add("image-container");
 
-      const imageList = document.createElement("ul");
-      imageList.classList.add("image-list");
+      images.forEach((group) => {
+        const groupContainer = document.createElement("div");
+        groupContainer.classList.add("group");
 
-      images.forEach((image) => {
-        const listItem = document.createElement("li");
+        const groupHeading = document.createElement("h2");
+        groupHeading.textContent = group.heading;
 
-        const link = document.createElement("a");
-        link.href = image.href;
+        const imageList = document.createElement("ul");
+        imageList.classList.add("image-list");
 
-        const circle = document.createElement("div");
-        circle.classList.add("circle");
+        group.images.forEach((image) => {
+          const listItem = document.createElement("li");
 
-        const img = document.createElement("img");
-        img.src = image.imageSrc;
+          const link = document.createElement("a");
+          link.href = image.href;
 
-        const description = document.createElement("div");
-        description.classList.add("description");
-        description.textContent = image.description;
+          const circle = document.createElement("div");
+          circle.classList.add("circle");
 
-        circle.appendChild(img);
-        link.appendChild(circle);
-        link.appendChild(description);
-        listItem.appendChild(link);
-        imageList.appendChild(listItem);
+          const img = document.createElement("img");
+          img.src = image.imageSrc;
+
+          const description = document.createElement("div");
+          description.classList.add("description");
+          description.textContent = image.description;
+
+          circle.appendChild(img);
+          link.appendChild(circle);
+          link.appendChild(description);
+          listItem.appendChild(link);
+          imageList.appendChild(listItem);
+        });
+
+        groupContainer.appendChild(groupHeading);
+        groupContainer.appendChild(imageList);
+        listContainer.appendChild(groupContainer);
       });
-
-      listContainer.appendChild(imageList);
 
       return listContainer.outerHTML;
     }
 
+
     document.addEventListener("DOMContentLoaded", function () {
-      const images = [
-        { imageSrc: "./culture.png", description: "Культура.РФ", href: "https://culture.ru" },
-        { imageSrc: "./smithsonian.jpg", description: "Smithsonian Magazine", href: "https://www.smithsonianmag.com" },
-        { imageSrc: "./natgeo.jpg", description: "National Geographic", href: "https://www.nationalgeographic.com" },
-
-        { imageSrc: "./meduza.png", description: "Медуза", href: "https://meduza.io" },
-        { imageSrc: "./bbc.jpg", description: "BBC News Русская Служба", href: "https://www.bbc.com/russian" },
-        { imageSrc: "./moscowtimes.jpg", description: "The Moscow Times", href: "https://www.moscowtimes.ru" },
-        { imageSrc: "./theinsider.png", description: "The Insider", href: "https://theins.ru" },
-        { imageSrc: "./thebell.png", description: "The Bell", href: "https://thebell.io" },
-
-        { imageSrc: "./simplyrailway.jpg", description: "Simply Railway", href: "https://www.youtube.com/c/SimplyRailway" },
-        { imageSrc: "./kugastravel.jpg", description: "Kuga's Travel", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
-        { imageSrc: "./dylanstravel.jpg", description: "Dylan's  Travel Reports", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
-
-        { imageSrc: "./mit.png", description: "MIT News", href: "https://news.mit.edu" },
-        { imageSrc: "./thecity.png", description: "The City", href: "https://www.thecity.nyc/" },
-        { imageSrc: "./bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
-        { imageSrc: "./visualcapitalist.png", description: "Visual Capitalist", href: "https://www.visualcapitalist.com/" },
+      const groups = [
+        {
+          heading: "Новости",
+          images: [
+            { imageSrc: "./meduza.png", description: "Медуза", href: "https://meduza.io" },
+            { imageSrc: "./bbc.jpg", description: "BBC News Русская Служба", href: "https://www.bbc.com/russian" },
+            { imageSrc: "./moscowtimes.jpg", description: "The Moscow Times", href: "https://www.moscowtimes.ru" },
+            { imageSrc: "./theinsider.png", description: "The Insider", href: "https://theins.ru" },
+            { imageSrc: "./thebell.png", description: "The Bell", href: "https://thebell.io" },
+          ]
+        },
+        {
+          heading: "Культура",
+          images: [
+            { imageSrc: "./culture.png", description: "Культура.РФ", href: "https://culture.ru" },
+            { imageSrc: "./smithsonian.jpg", description: "Smithsonian Magazine", href: "https://www.smithsonianmag.com" },
+            { imageSrc: "./natgeo.jpg", description: "National Geographic", href: "https://www.nationalgeographic.com" },
+          ]
+        },
+        {
+          heading: "Путешествия",
+          images: [
+            { imageSrc: "./simplyrailway.jpg", description: "Simply Railway", href: "https://www.youtube.com/c/SimplyRailway" },
+            { imageSrc: "./kugastravel.jpg", description: "Kuga's Travel", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
+            { imageSrc: "./dylanstravel.jpg", description: "Dylan's  Travel Reports", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
+          ]
+        }, {
+          heading: "Прочее",
+          images: [
+            { imageSrc: "./mit.png", description: "MIT News", href: "https://news.mit.edu" },
+            { imageSrc: "./thecity.png", description: "The City", href: "https://www.thecity.nyc/" },
+            { imageSrc: "./bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
+            { imageSrc: "./visualcapitalist.png", description: "Visual Capitalist", href: "https://www.visualcapitalist.com/" },
+          ]
+        },
       ];
 
-      const imageListHtml = generateImageList(images);
+      const imageListHtml = generateImageList(groups);
       document.body.innerHTML = imageListHtml;
     });
   </script>
