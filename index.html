@@ -25,7 +25,6 @@
     .group {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       font-size: 24px;
       font-family: "Bodoni", sans-serif;
@@ -37,17 +36,15 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      margin: 0;
-      padding: 0;
       width: 80%;
       max-width: 1000px;
     }
 
-    .image-list li {
+    .image-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       margin: 20px;
       text-align: center;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -56,7 +53,7 @@
       transition: box-shadow 0.3s ease-in-out;
     }
 
-    .image-list li:hover {
+    .image-item:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
@@ -104,14 +101,15 @@
         const groupHeading = document.createElement("h2");
         groupHeading.textContent = group.heading;
 
-        const imageList = document.createElement("ul");
+        const imageList = document.createElement("div");
         imageList.classList.add("image-list");
 
         group.images.forEach((image) => {
-          const listItem = document.createElement("li");
-
           const link = document.createElement("a");
           link.href = image.href;
+          
+          const itemContainer = document.createElement("div");
+          itemContainer.classList.add("image-item");
 
           const circle = document.createElement("div");
           circle.classList.add("circle");
@@ -124,10 +122,10 @@
           description.textContent = image.description;
 
           circle.appendChild(img);
-          link.appendChild(circle);
-          link.appendChild(description);
-          listItem.appendChild(link);
-          imageList.appendChild(listItem);
+          link.appendChild(itemContainer);
+          itemContainer.appendChild(circle);
+          itemContainer.appendChild(description);
+          imageList.appendChild(link);
         });
 
         groupContainer.appendChild(groupHeading);
