@@ -107,7 +107,7 @@
         group.images.forEach((image) => {
           const link = document.createElement("a");
           link.href = image.href;
-          
+
           const itemContainer = document.createElement("div");
           itemContainer.classList.add("startpage-item");
 
@@ -167,9 +167,10 @@
         }, {
           heading: "Прочее",
           images: [
+            { imageSrc: "./images/axios.png", description: "Axios", href: "https://www.axios.com" },
+            { imageSrc: "./images/bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
             { imageSrc: "./images/mit.png", description: "MIT News", href: "https://news.mit.edu" },
             { imageSrc: "./images/thecity.png", description: "The City", href: "https://www.thecity.nyc/" },
-            { imageSrc: "./images/bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
             { imageSrc: "./images/visualcapitalist.png", description: "Visual Capitalist", href: "https://www.visualcapitalist.com/" },
           ]
         },
