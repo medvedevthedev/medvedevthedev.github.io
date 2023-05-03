@@ -90,23 +90,23 @@
 
 <body>
   <script>
-    function generateImageList(images) {
+    function generateStartpageItemList(items) {
       const listContainer = document.createElement("div");
       listContainer.classList.add("container");
 
-      images.forEach((group) => {
+      items.forEach((group) => {
         const groupContainer = document.createElement("div");
         groupContainer.classList.add("group");
 
         const groupHeading = document.createElement("h2");
         groupHeading.textContent = group.heading;
 
-        const imageList = document.createElement("div");
-        imageList.classList.add("startpage-item-list");
+        const itemList = document.createElement("div");
+        itemList.classList.add("startpage-item-list");
 
-        group.images.forEach((image) => {
+        group.items.forEach((item) => {
           const link = document.createElement("a");
-          link.href = image.href;
+          link.href = item.href;
 
           const itemContainer = document.createElement("div");
           itemContainer.classList.add("startpage-item");
@@ -115,21 +115,21 @@
           circle.classList.add("circle");
 
           const img = document.createElement("img");
-          img.src = image.imageSrc;
+          img.src = item.logo;
 
           const description = document.createElement("div");
           description.classList.add("description");
-          description.textContent = image.description;
+          description.textContent = item.description;
 
           circle.appendChild(img);
           link.appendChild(itemContainer);
           itemContainer.appendChild(circle);
           itemContainer.appendChild(description);
-          imageList.appendChild(link);
+          itemList.appendChild(link);
         });
 
         groupContainer.appendChild(groupHeading);
-        groupContainer.appendChild(imageList);
+        groupContainer.appendChild(itemList);
         listContainer.appendChild(groupContainer);
       });
 
@@ -140,61 +140,61 @@
       const groups = [
         {
           heading: "Избранное",
-          images: [
-            { imageSrc: "./images/weather.jpg", description: "Погода", href: "https://openweathermap.org/city/4930956" },
+          items: [
+            { logo: "./images/weather.jpg", description: "Погода", href: "https://openweathermap.org/city/4930956" },
           ]
         },
         {
           heading: "ТВ / Видео",
-          images: [
-            { imageSrc: "./images/realtime.png", description: "Настоящее Время", href: "https://www.youtube.com/embed/HHgksyoQxAs" },
-            { imageSrc: "./images/tvrain.png", description: "Телеканал \"Дождь\"", href: "https://www.youtube.com/@tvrain/videos" },
-            { imageSrc: "./images/vdud.jpg", description: "вДудь", href: "https://www.youtube.com/@vdud/videos" },
-            { imageSrc: "./images/russiansareokay.jpeg", description: "Это Осетинская", href: "https://www.youtube.com/@RussiansAreOkay/videos" },
+          items: [
+            { logo: "./images/realtime.png", description: "Настоящее Время", href: "https://www.youtube.com/embed/HHgksyoQxAs" },
+            { logo: "./images/tvrain.png", description: "Телеканал \"Дождь\"", href: "https://www.youtube.com/@tvrain/videos" },
+            { logo: "./images/vdud.jpg", description: "вДудь", href: "https://www.youtube.com/@vdud/videos" },
+            { logo: "./images/russiansareokay.jpeg", description: "Это Осетинская", href: "https://www.youtube.com/@RussiansAreOkay/videos" },
           ]
         },
         {
           heading: "Новости",
-          images: [
-            { imageSrc: "./images/meduza.png", description: "Медуза", href: "https://meduza.io" },
-            { imageSrc: "./images/mediazona.png", description: "Медиазона", href: "https://zona.media" },
-            { imageSrc: "./images/bbc.jpg", description: "BBC News Русская Служба", href: "https://www.bbc.com/russian" },
-            { imageSrc: "./images/moscowtimes.jpg", description: "The Moscow Times", href: "https://www.moscowtimes.ru" },
-            { imageSrc: "./images/theinsider.png", description: "The Insider", href: "https://theins.ru" },
-            { imageSrc: "./images/thebell.png", description: "The Bell", href: "https://thebell.io" },
-            { imageSrc: "./images/ovd-info.png", description: "ОВД-Инфо", href: "https://ovdinfo.org" },
+          items: [
+            { logo: "./images/meduza.png", description: "Медуза", href: "https://meduza.io" },
+            { logo: "./images/mediazona.png", description: "Медиазона", href: "https://zona.media" },
+            { logo: "./images/bbc.jpg", description: "BBC News Русская Служба", href: "https://www.bbc.com/russian" },
+            { logo: "./images/moscowtimes.jpg", description: "The Moscow Times", href: "https://www.moscowtimes.ru" },
+            { logo: "./images/theinsider.png", description: "The Insider", href: "https://theins.ru" },
+            { logo: "./images/thebell.png", description: "The Bell", href: "https://thebell.io" },
+            { logo: "./images/ovd-info.png", description: "ОВД-Инфо", href: "https://ovdinfo.org" },
           ]
         },
         {
           heading: "Культура",
-          images: [
-            { imageSrc: "./images/culture.png", description: "Культура.РФ", href: "https://culture.ru" },
-            { imageSrc: "./images/smithsonian.jpg", description: "Smithsonian Magazine", href: "https://www.smithsonianmag.com" },
-            { imageSrc: "./images/natgeo.jpg", description: "National Geographic", href: "https://www.nationalgeographic.com" },
+          items: [
+            { logo: "./images/culture.png", description: "Культура.РФ", href: "https://culture.ru" },
+            { logo: "./images/smithsonian.jpg", description: "Smithsonian Magazine", href: "https://www.smithsonianmag.com" },
+            { logo: "./images/natgeo.jpg", description: "National Geographic", href: "https://www.nationalgeographic.com" },
           ]
         },
         {
           heading: "Путешествия",
-          images: [
-            { imageSrc: "./images/simplyrailway.jpg", description: "Simply Railway", href: "https://www.youtube.com/c/SimplyRailway" },
-            { imageSrc: "./images/kugastravel.jpg", description: "Kuga's Travel", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
-            { imageSrc: "./images/dylanstravel.jpg", description: "Dylan's  Travel Reports", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
+          items: [
+            { logo: "./images/simplyrailway.jpg", description: "Simply Railway", href: "https://www.youtube.com/c/SimplyRailway" },
+            { logo: "./images/kugastravel.jpg", description: "Kuga's Travel", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
+            { logo: "./images/dylanstravel.jpg", description: "Dylan's  Travel Reports", href: "https://www.youtube.com/channel/UCDa5_HJ3qPkDtbRmdlqBD3g" },
           ]
         }, {
           heading: "Прочее",
-          images: [
-            { imageSrc: "./images/axios.png", description: "Axios", href: "https://www.axios.com" },
-            { imageSrc: "./images/bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
-            { imageSrc: "./images/mit.png", description: "MIT News", href: "https://news.mit.edu" },
-            { imageSrc: "./images/hbr.jpg", description: "Harvard Business Review", href: "https://hbr.org" },
-            { imageSrc: "./images/thecity.png", description: "The City", href: "https://www.thecity.nyc/" },
-            { imageSrc: "./images/visualcapitalist.png", description: "Visual Capitalist", href: "https://www.visualcapitalist.com/" },
+          items: [
+            { logo: "./images/axios.png", description: "Axios", href: "https://www.axios.com" },
+            { logo: "./images/bloomberg.jpg", description: "Bloomberg", href: "https://www.bloomberg.com" },
+            { logo: "./images/mit.png", description: "MIT News", href: "https://news.mit.edu" },
+            { logo: "./images/hbr.jpg", description: "Harvard Business Review", href: "https://hbr.org" },
+            { logo: "./images/thecity.png", description: "The City", href: "https://www.thecity.nyc/" },
+            { logo: "./images/visualcapitalist.png", description: "Visual Capitalist", href: "https://www.visualcapitalist.com/" },
           ]
         },
       ];
 
-      const imageListHtml = generateImageList(groups);
-      document.body.innerHTML = imageListHtml;
+      const startpageItemListHtml = generateStartpageItemList(groups);
+      document.body.innerHTML = startpageItemListHtml;
     });
   </script>
 </body>
